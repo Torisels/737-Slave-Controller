@@ -287,7 +287,7 @@ clean: CMakeFiles/PLATFORMIO_TEST.dir/clean
 CMakeFiles/737_Slave_Controller.dir/all:
 	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/depend
 	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 737_Slave_Controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target 737_Slave_Controller"
 .PHONY : CMakeFiles/737_Slave_Controller.dir/all
 
 # Include target in all.
@@ -297,7 +297,7 @@ all: CMakeFiles/737_Slave_Controller.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/737_Slave_Controller.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles 6
 	$(MAKE) -f CMakeFiles\Makefile2 CMakeFiles/737_Slave_Controller.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/737_Slave_Controller.dir/rule

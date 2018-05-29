@@ -226,6 +226,114 @@ PLATFORMIO_UPDATE_ALL/fast:
 	$(MAKE) -f CMakeFiles\PLATFORMIO_UPDATE_ALL.dir\build.make CMakeFiles/PLATFORMIO_UPDATE_ALL.dir/build
 .PHONY : PLATFORMIO_UPDATE_ALL/fast
 
+lib/Wire/src/Wire.obj: lib/Wire/src/Wire.cpp.obj
+
+.PHONY : lib/Wire/src/Wire.obj
+
+# target to build an object file
+lib/Wire/src/Wire.cpp.obj:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj
+.PHONY : lib/Wire/src/Wire.cpp.obj
+
+lib/Wire/src/Wire.i: lib/Wire/src/Wire.cpp.i
+
+.PHONY : lib/Wire/src/Wire.i
+
+# target to preprocess a source file
+lib/Wire/src/Wire.cpp.i:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.i
+.PHONY : lib/Wire/src/Wire.cpp.i
+
+lib/Wire/src/Wire.s: lib/Wire/src/Wire.cpp.s
+
+.PHONY : lib/Wire/src/Wire.s
+
+# target to generate assembly for a file
+lib/Wire/src/Wire.cpp.s:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.s
+.PHONY : lib/Wire/src/Wire.cpp.s
+
+lib/Wire/src/utility/twi.obj: lib/Wire/src/utility/twi.c.obj
+
+.PHONY : lib/Wire/src/utility/twi.obj
+
+# target to build an object file
+lib/Wire/src/utility/twi.c.obj:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj
+.PHONY : lib/Wire/src/utility/twi.c.obj
+
+lib/Wire/src/utility/twi.i: lib/Wire/src/utility/twi.c.i
+
+.PHONY : lib/Wire/src/utility/twi.i
+
+# target to preprocess a source file
+lib/Wire/src/utility/twi.c.i:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.i
+.PHONY : lib/Wire/src/utility/twi.c.i
+
+lib/Wire/src/utility/twi.s: lib/Wire/src/utility/twi.c.s
+
+.PHONY : lib/Wire/src/utility/twi.s
+
+# target to generate assembly for a file
+lib/Wire/src/utility/twi.c.s:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.s
+.PHONY : lib/Wire/src/utility/twi.c.s
+
+src/MyWire.obj: src/MyWire.cpp.obj
+
+.PHONY : src/MyWire.obj
+
+# target to build an object file
+src/MyWire.cpp.obj:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj
+.PHONY : src/MyWire.cpp.obj
+
+src/MyWire.i: src/MyWire.cpp.i
+
+.PHONY : src/MyWire.i
+
+# target to preprocess a source file
+src/MyWire.cpp.i:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.i
+.PHONY : src/MyWire.cpp.i
+
+src/MyWire.s: src/MyWire.cpp.s
+
+.PHONY : src/MyWire.s
+
+# target to generate assembly for a file
+src/MyWire.cpp.s:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.s
+.PHONY : src/MyWire.cpp.s
+
+src/adc.obj: src/adc.cpp.obj
+
+.PHONY : src/adc.obj
+
+# target to build an object file
+src/adc.cpp.obj:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj
+.PHONY : src/adc.cpp.obj
+
+src/adc.i: src/adc.cpp.i
+
+.PHONY : src/adc.i
+
+# target to preprocess a source file
+src/adc.cpp.i:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.i
+.PHONY : src/adc.cpp.i
+
+src/adc.s: src/adc.cpp.s
+
+.PHONY : src/adc.s
+
+# target to generate assembly for a file
+src/adc.cpp.s:
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.s
+.PHONY : src/adc.cpp.s
+
 src/main.obj: src/main.cpp.obj
 
 .PHONY : src/main.obj
@@ -270,6 +378,18 @@ help:
 	@echo ... PLATFORMIO_UPDATE_ALL
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... lib/Wire/src/Wire.obj
+	@echo ... lib/Wire/src/Wire.i
+	@echo ... lib/Wire/src/Wire.s
+	@echo ... lib/Wire/src/utility/twi.obj
+	@echo ... lib/Wire/src/utility/twi.i
+	@echo ... lib/Wire/src/utility/twi.s
+	@echo ... src/MyWire.obj
+	@echo ... src/MyWire.i
+	@echo ... src/MyWire.s
+	@echo ... src/adc.obj
+	@echo ... src/adc.i
+	@echo ... src/adc.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

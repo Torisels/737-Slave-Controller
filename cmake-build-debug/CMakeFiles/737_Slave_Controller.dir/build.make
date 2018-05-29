@@ -56,10 +56,60 @@ include CMakeFiles/737_Slave_Controller.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/737_Slave_Controller.dir/flags.make
 
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj: CMakeFiles/737_Slave_Controller.dir/flags.make
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj: CMakeFiles/737_Slave_Controller.dir/includes_CXX.rsp
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj: ../src/MyWire.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\737_Slave_Controller.dir\src\MyWire.cpp.obj -c C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\MyWire.cpp
+
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.i"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\MyWire.cpp > CMakeFiles\737_Slave_Controller.dir\src\MyWire.cpp.i
+
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.s"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\MyWire.cpp -o CMakeFiles\737_Slave_Controller.dir\src\MyWire.cpp.s
+
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.requires:
+
+.PHONY : CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.requires
+
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.provides: CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.provides.build
+.PHONY : CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.provides
+
+CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.provides.build: CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj
+
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj: CMakeFiles/737_Slave_Controller.dir/flags.make
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj: CMakeFiles/737_Slave_Controller.dir/includes_CXX.rsp
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj: ../src/adc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\737_Slave_Controller.dir\src\adc.cpp.obj -c C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\adc.cpp
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.i"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\adc.cpp > CMakeFiles\737_Slave_Controller.dir\src\adc.cpp.i
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.s"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\adc.cpp -o CMakeFiles\737_Slave_Controller.dir\src\adc.cpp.s
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.requires:
+
+.PHONY : CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.requires
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.provides: CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.provides.build
+.PHONY : CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.provides
+
+CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.provides.build: CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj
+
+
 CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj: CMakeFiles/737_Slave_Controller.dir/flags.make
 CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj: CMakeFiles/737_Slave_Controller.dir/includes_CXX.rsp
 CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj"
 	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\737_Slave_Controller.dir\src\main.cpp.obj -c C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\src\main.cpp
 
 CMakeFiles/737_Slave_Controller.dir/src/main.cpp.i: cmake_force
@@ -81,19 +131,77 @@ CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj.provides: CMakeFiles/737_Sl
 CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj.provides.build: CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj
 
 
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj: CMakeFiles/737_Slave_Controller.dir/flags.make
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj: CMakeFiles/737_Slave_Controller.dir/includes_CXX.rsp
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj: ../lib/Wire/src/Wire.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\Wire.cpp.obj -c C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\Wire.cpp
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.i"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\Wire.cpp > CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\Wire.cpp.i
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.s"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\Wire.cpp -o CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\Wire.cpp.s
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.requires:
+
+.PHONY : CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.requires
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.provides: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.provides.build
+.PHONY : CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.provides
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.provides.build: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj
+
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj: CMakeFiles/737_Slave_Controller.dir/flags.make
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj: CMakeFiles/737_Slave_Controller.dir/includes_C.rsp
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj: ../lib/Wire/src/utility/twi.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\utility\twi.c.obj   -c C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\utility\twi.c
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.i"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\utility\twi.c > CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\utility\twi.c.i
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.s"
+	C:\Users\Gustaw\.platformio\packages\toolchain-atmelavr\bin\avr-gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\lib\Wire\src\utility\twi.c -o CMakeFiles\737_Slave_Controller.dir\lib\Wire\src\utility\twi.c.s
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.requires:
+
+.PHONY : CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.requires
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.provides: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.requires
+	$(MAKE) -f CMakeFiles\737_Slave_Controller.dir\build.make CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.provides.build
+.PHONY : CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.provides
+
+CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.provides.build: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj
+
+
 # Object files for target 737_Slave_Controller
 737_Slave_Controller_OBJECTS = \
-"CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj"
+"CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj" \
+"CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj" \
+"CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj" \
+"CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj" \
+"CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj"
 
 # External object files for target 737_Slave_Controller
 737_Slave_Controller_EXTERNAL_OBJECTS =
 
+737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj
+737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj
 737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj
+737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj
+737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj
 737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/build.make
 737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/linklibs.rsp
 737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/objects1.rsp
 737_Slave_Controller.exe: CMakeFiles/737_Slave_Controller.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable 737_Slave_Controller.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\Gustaw\Documents\Projects\737_Slave_Controller\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable 737_Slave_Controller.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\737_Slave_Controller.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -101,7 +209,11 @@ CMakeFiles/737_Slave_Controller.dir/build: 737_Slave_Controller.exe
 
 .PHONY : CMakeFiles/737_Slave_Controller.dir/build
 
+CMakeFiles/737_Slave_Controller.dir/requires: CMakeFiles/737_Slave_Controller.dir/src/MyWire.cpp.obj.requires
+CMakeFiles/737_Slave_Controller.dir/requires: CMakeFiles/737_Slave_Controller.dir/src/adc.cpp.obj.requires
 CMakeFiles/737_Slave_Controller.dir/requires: CMakeFiles/737_Slave_Controller.dir/src/main.cpp.obj.requires
+CMakeFiles/737_Slave_Controller.dir/requires: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/Wire.cpp.obj.requires
+CMakeFiles/737_Slave_Controller.dir/requires: CMakeFiles/737_Slave_Controller.dir/lib/Wire/src/utility/twi.c.obj.requires
 
 .PHONY : CMakeFiles/737_Slave_Controller.dir/requires
 

@@ -3,7 +3,7 @@
 //
 #include <Arduino.h>
 #include <Wire.h>
-
+#include <MyWire.h>
 
 //INPUT PULL-UPS ARE NOT REQUIRED IN SLAVE
 #define DEVICE_ID 1
@@ -24,15 +24,6 @@ uint8_t buffer[MAX_BUFFER_SIZE];
 uint8_t FLAG_INPUT_READY = 0;
 uint8_t FLAG_SETUP_DONE = 0;
 
-void receiveEvent(int howMany) {
-    uint8_t buf[howMany] = {};
-    int a = 0;
-    while (a = Wire.available()) {
-        buf[howMany-a] = Wire.read(); // receive byte as a character
-    }
-    current_lenght = howMany;
-    memcpy(buffer,buf,sizeof(buf));
-}
 
 
 
@@ -78,6 +69,16 @@ void handleRecieve()
             break;
     }
         current_lenght = 0;
+}
+void receiveEvent(int howMany) {
+    uint8_t buf[howMany] = {};
+    int a = 0;
+    while ((a = Wire.available())) {
+        buf[howMany-a] = Wire.read();
+}
+    current_lenght = howMany;
+    memmove(buffer,buf,sizeof(buf));
+    handleRecieve();
 }
 void requestEvent() {
     if(FLAG_INPUT_READY&&FLAG_SETUP_DONE)
