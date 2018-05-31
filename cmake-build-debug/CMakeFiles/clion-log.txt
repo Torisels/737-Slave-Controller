@@ -1,4 +1,0 @@
-C:\Users\Gustaw\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\181.4203.505\bin\cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Gustaw\Documents\Projects\737_Slave_Controller
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/Gustaw/Documents/Projects/737_Slave_Controller/cmake-build-debug
