@@ -99,6 +99,6 @@ void setup()
 
 void loop()
 {
-    delay(2);
+    delay(26);
 }
 
