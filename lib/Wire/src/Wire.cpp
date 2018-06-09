@@ -43,6 +43,7 @@ uint8_t TwoWire::transmitting = 0;
 void (*TwoWire::user_onRequest)(void);
 void (*TwoWire::user_onReceive)(int);
 
+
 // Constructors ////////////////////////////////////////////////////////////////
 
 TwoWire::TwoWire()
@@ -69,7 +70,10 @@ void TwoWire::begin(uint8_t address)
   twi_attachSlaveRxEvent(onReceiveService);
   begin();
 }
-
+uint8_t * TwoWire::get_Array()
+{
+  return rxBuffer;
+}
 void TwoWire::begin(int address)
 {
   begin((uint8_t)address);

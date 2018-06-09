@@ -10,7 +10,8 @@
 #define FLAG_SETUP 0xFA
 #define FLAG_OUT 0xFB
 #define FLAG_IN 0xFC
-#define SENDING_BUFFER_SIZE 6
+#define SENDING_BUFFER_SIZE 14 // FLAG_SEND, Dev_ID, PINA-D, ANALOG0-7
+#define SENDING_BUFFER_SIZE_NO_ANALOG 6
 #define MAX_BUFFER_SIZE 64
 
 #define PORTA_POS 1
@@ -23,7 +24,14 @@ int current_lenght=0;
 uint8_t buffer[MAX_BUFFER_SIZE];
 uint8_t FLAG_INPUT_READY = 0;
 uint8_t FLAG_SETUP_DONE = 0;
+uint8_t FLAG_INPUT_INTTERUPT = 0;
 
+uint8_t FLAG_USE_ANALOG = 0;
+uint8_t ANALOG_CHANNELS_ACTIVE = 0;
+
+uint8_t sending_buffer[SENDING_BUFFER_SIZE];
+uint8_t FLAG_DATA_RECEIVED = 0;
+uint8_t BYTES_RECEIVED=0;
 
 
 
@@ -71,22 +79,33 @@ void handleRecieve()
         current_lenght = 0;
 }
 void receiveEvent(int howMany) {
-    uint8_t buf[howMany] = {};
-    int a = 0;
-    while ((a = Wire.available())) {
-        buf[howMany-a] = Wire.read();
-}
-    current_lenght = howMany;
-    memmove(buffer,buf,sizeof(buf));
-    handleRecieve();
+
+    FLAG_DATA_RECEIVED = 1;
+    BYTES_RECEIVED = howMany;
+//    uint8_t buf[howMany] = {};
+//    int a = 0;
+//    while ((a = Wire.available())) {
+//        buf[howMany-a] = Wire.read();
+//}
+//    current_lenght = howMany;
+//    memmove(buffer,buf,sizeof(buf));
+//    handleRecieve();
 }
 void requestEvent() {
+
     if(FLAG_INPUT_READY&&FLAG_SETUP_DONE)
     {
-        uint8_t dev_id = DEVICE_ID;
-        uint8_t temp_buffer[SENDING_BUFFER_SIZE] = {FLAG_IN,dev_id,PINA,PINB,PINC,PIND};
-        Wire.write(temp_buffer,SENDING_BUFFER_SIZE);
-        FLAG_INPUT_READY = 0;
+//        if(!FLAG_USE_ANALOG)
+//        {
+//            uint8_t temp_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = {FLAG_IN,DEVICE_ID,PINA,PINB,PINC,PIND};
+//            Wire.write(temp_buffer,SENDING_BUFFER_SIZE_NO_ANALOG);
+//            FLAG_INPUT_READY = 0;
+//        }
+//        else {
+//
+//        }
+        FLAG_INPUT_INTTERUPT = 1;
+
     }
 }
 
@@ -99,6 +118,15 @@ void setup()
 
 void loop()
 {
-    delay(26);
+
+    delay(1);
+    if(FLAG_INPUT_INTTERUPT)
+    {
+
+
+
+        FLAG_INPUT_INTTERUPT = 0;
+    }
+    uint8_t* a = Wire.getArray();
 }
 

@@ -8,7 +8,7 @@
 #endif //INC_737_SLAVE_CONTROLLER_MYWIRE_H
 
 
-#define DEVICE_ID 1
+#define DEVICE_ID 1 //todo new board
 #define FLAG_SETUP 0xFA
 #define FLAG_OUT 0xFB
 #define FLAG_INPUT 0xFC
@@ -21,3 +21,4 @@
 #define PORTD_POS 4
 
 void handle_receive_data();
+void receive_routine_main();
