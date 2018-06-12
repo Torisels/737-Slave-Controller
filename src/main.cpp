@@ -71,6 +71,9 @@ adc ad = adc();
  * -DDRA,DDRB,DDRC
  *
  *
+ * DATA SEND ROUTINE:
+ * FLAG, DEVICE_ID, PINA-D,VCC_H,VCC_L,ADC0-7_H_L
+ *
  * */
 void handleRecieve()
 {
@@ -122,7 +125,7 @@ void loop()
             uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
             t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = ADC_RESULT_H;
             t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+1] = ADC_RESULT_L;
-            
+
 
             for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
             {
