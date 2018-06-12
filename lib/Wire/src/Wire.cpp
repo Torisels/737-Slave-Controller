@@ -46,8 +46,9 @@ void (*TwoWire::user_onReceive)(int);
 
 // Constructors ////////////////////////////////////////////////////////////////
 
-TwoWire::TwoWire()
+TwoWire::TwoWire(uint8_t *buffer)
 {
+  rxBuffer = buffer;
 }
 
 // Public Methods //////////////////////////////////////////////////////////////
@@ -70,7 +71,7 @@ void TwoWire::begin(uint8_t address)
   twi_attachSlaveRxEvent(onReceiveService);
   begin();
 }
-uint8_t * TwoWire::get_Array()
+uint8_t *TwoWire::get_Array()
 {
   return rxBuffer;
 }
@@ -327,8 +328,12 @@ void TwoWire::onRequest( void (*function)(void) )
 {
   user_onRequest = function;
 }
+void TwoWire::end3()
+{
+  printf("a");
+}
 
 // Preinstantiate Objects //////////////////////////////////////////////////////
 
-TwoWire Wire = TwoWire();
+
 

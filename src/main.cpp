@@ -1,6 +1,8 @@
 //
 // Created by Gustaw on 25-May-18.
 //
+
+#define TWDR
 #include <Arduino.h>
 #include <Wire.h>
 #include <MyWire.h>
@@ -34,7 +36,7 @@ uint8_t FLAG_DATA_RECEIVED = 0;
 uint8_t BYTES_RECEIVED=0;
 
 
-
+TwoWire Wire = TwoWire(buffer);
 
 /*
  * FLAG SETUP:
@@ -91,6 +93,8 @@ void receiveEvent(int howMany) {
 //    memmove(buffer,buf,sizeof(buf));
 //    handleRecieve();
 }
+
+
 void requestEvent() {
 
     if(FLAG_INPUT_READY&&FLAG_SETUP_DONE)
@@ -127,6 +131,6 @@ void loop()
 
         FLAG_INPUT_INTTERUPT = 0;
     }
-    uint8_t* a = Wire.getArray();
+     Wire.end3();
 }
 
