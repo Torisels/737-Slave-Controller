@@ -26,7 +26,7 @@ extern "C" {
   #include "utility/twi.h"
 }
 
-#include "Wire.h"
+#include "Wire1.h"
 
 // Initialize Class Variables //////////////////////////////////////////////////
 

@@ -19,14 +19,13 @@
   Modified 2012 by Todd Krein (todd@krein.org) to implement repeated starts
 */
 
-
-#ifndef TwoWire_h
-#define TwoWire_h
+#ifndef TwoWire1_h
+#define TwoWire1_h
 
 #include <inttypes.h>
 #include "Stream.h"
 
-#define BUFFER_LENGTH 64// was 32
+#define BUFFER_LENGTH 32
 
 // WIRE_HAS_END means Wire has end()
 #define WIRE_HAS_END 1
@@ -49,12 +48,11 @@ class TwoWire : public Stream
     static void onRequestService(void);
     static void onReceiveService(uint8_t*, int);
   public:
-    TwoWire(uint8_t*);
+    TwoWire();
     void begin();
     void begin(uint8_t);
     void begin(int);
     void end();
-    void end3();
     void setClock(uint32_t);
     void beginTransmission(uint8_t);
     void beginTransmission(int);
@@ -65,8 +63,6 @@ class TwoWire : public Stream
 	uint8_t requestFrom(uint8_t, uint8_t, uint32_t, uint8_t, uint8_t);
     uint8_t requestFrom(int, int);
     uint8_t requestFrom(int, int, int);
-    uint8_t *get_Array();
-    uint8_t *get_Array2();
     virtual size_t write(uint8_t);
     virtual size_t write(const uint8_t *, size_t);
     virtual int available(void);
