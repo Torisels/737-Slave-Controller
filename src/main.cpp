@@ -93,7 +93,6 @@ void requestEvent() {
 
 void setup()
 {
-
     Wire.begin(DEVICE_ID);
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
@@ -103,6 +102,10 @@ void loop()
 {
     if(FLAG_USE_ANALOG)
     {
+        uint16_t vcc = ad.read_vcc();
+        ADC_RESULT_L = vcc;
+        ADC_RESULT_H = vcc>>8;
+
         int counter = 0;
         for (uint8_t i=0;i<ADC_CHANNELS;i++)
         {
@@ -122,10 +125,7 @@ void loop()
         }
         else
         {
-            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
-            t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = ADC_RESULT_H;
-            t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+1] = ADC_RESULT_L;
-
+            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND,ADC_RESULT_H,ADC_RESULT_L};
 
             for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
             {
@@ -169,7 +169,7 @@ void loop()
             case FLAG_DATA_READY_TO_SEND:
                 FLAG_INPUT_READY = 1;
                 break;
-            case FLAG_OUT:
+            case FLAG_SET_OUTPUT_PINS:
                 PORTA = rx_buffer[PORTA_POS];
                 PORTB = rx_buffer[PORTB_POS];
                 PORTC = rx_buffer[PORTC_POS];

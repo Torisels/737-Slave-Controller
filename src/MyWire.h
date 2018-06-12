@@ -11,7 +11,7 @@
 
 #define DEVICE_ID 1 //todo new board
 #define FLAG_SETUP 0xFA
-#define FLAG_OUT 0xFB
+#define FLAG_SET_OUTPUT_PINS 0xFB
 #define FLAG_INPUT 0xFC
 //#define SENDING_BUFFER_SIZE 6
 //#define MAX_RX_BUFFER_SIZE 64
