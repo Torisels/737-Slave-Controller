@@ -48,7 +48,7 @@ void (*TwoWire::user_onReceive)(int);
 
 TwoWire::TwoWire(uint8_t *buffer)
 {
-  rxBuffer = buffer;
+  *rxBuffer = *buffer;
 }
 
 // Public Methods //////////////////////////////////////////////////////////////
@@ -71,10 +71,7 @@ void TwoWire::begin(uint8_t address)
   twi_attachSlaveRxEvent(onReceiveService);
   begin();
 }
-uint8_t *TwoWire::get_Array()
-{
-  return rxBuffer;
-}
+
 void TwoWire::begin(int address)
 {
   begin((uint8_t)address);
@@ -287,9 +284,9 @@ void TwoWire::onReceiveService(uint8_t* inBytes, int numBytes)
   // don't bother if rx buffer is in use by a master requestFrom() op
   // i know this drops data, but it allows for slight stupidity
   // meaning, they may not have read all the master requestFrom() data yet
-  if(rxBufferIndex < rxBufferLength){
-    return;
-  }
+//  if(rxBufferIndex < rxBufferLength){
+//    return;
+//  }
   // copy twi rx buffer into local read buffer
   // this enables new reads to happen in parallel
   for(uint8_t i = 0; i < numBytes; ++i){

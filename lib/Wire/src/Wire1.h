@@ -48,11 +48,12 @@ class TwoWire : public Stream
     static void onRequestService(void);
     static void onReceiveService(uint8_t*, int);
   public:
-    TwoWire();
+    TwoWire(uint8_t*);
     void begin();
     void begin(uint8_t);
     void begin(int);
     void end();
+    void end3();
     void setClock(uint32_t);
     void beginTransmission(uint8_t);
     void beginTransmission(int);

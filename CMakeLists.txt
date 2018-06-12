@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-project(piop)
+project(737_Slave_Controller)
 
 include(CMakeListsPrivate.txt)
 

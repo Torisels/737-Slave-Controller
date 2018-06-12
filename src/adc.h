@@ -12,10 +12,12 @@
 
 class adc {
 public:
+//    static uint8_t active_channels = 0;
     adc();
     void change_frequency(uint8_t adcsra);
     uint16_t adc_read(uint8_t ch);
     long read_vcc();
+//    static void getChannels(uint8_t* array);
 };
 
 

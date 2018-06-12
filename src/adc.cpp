@@ -57,3 +57,8 @@ long adc::read_vcc() {
     result = 1126400L / result; // Calculate Vcc (in mV); 1126400 = 1.1*1024*1000
     return result;
 }
+
+//void adc::getChannels(uint8_t *array) {
+//    for(int i = 0; )
+//}
+//

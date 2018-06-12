@@ -13,8 +13,8 @@
 #define FLAG_SETUP 0xFA
 #define FLAG_OUT 0xFB
 #define FLAG_INPUT 0xFC
-#define SENDING_BUFFER_SIZE 6
-#define MAX_BUFFER_SIZE 64
+//#define SENDING_BUFFER_SIZE 6
+//#define MAX_RX_BUFFER_SIZE 64
 
 #define PORTA_POS 1
 #define PORTB_POS 2
