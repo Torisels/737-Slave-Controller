@@ -16,7 +16,7 @@ public:
     adc();
     void change_frequency(uint8_t adcsra);
     uint16_t adc_read(uint8_t ch);
-    long read_vcc();
+    uint16_t read_vcc();
 //    static void getChannels(uint8_t* array);
 };
 

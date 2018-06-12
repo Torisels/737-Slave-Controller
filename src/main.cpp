@@ -6,6 +6,7 @@
 #include <Arduino.h>
 #include <Wire1.h>
 #include <MyWire.h>
+#include "adc.h"
 //#include <Wire.h>
 
 //INPUT PULL-UPS ARE NOT REQUIRED IN SLAVE
@@ -16,6 +17,7 @@
 #define FLAG_SEND 0xFD
 #define SENDING_BUFFER_SIZE 14 // FLAG_SEND, Dev_ID, PINA-D, ANALOG0-7
 #define SENDING_BUFFER_SIZE_NO_ANALOG 6
+#define SENDING_BUFFER_VCC_SIZE 2
 #define MAX_RX_BUFFER_SIZE 32
 #define ADC_CHANNELS 8
 
@@ -33,31 +35,34 @@ uint8_t FLAG_DATA_REQUESTED = 0;
 
 uint8_t FLAG_USE_ANALOG = 0;
 uint8_t ANALOG_CHANNELS_ACTIVE = 0;
-uint8_t ANALOG_CHANNELS = 0;
-uint8_t ANALOG_DATA[ADC_CHANNELS] = {};
+uint8_t ANALOG_CHANNEL_BIT_MASK = 0;
+uint16_t ANALOG_DATA[ADC_CHANNELS] = {};
 
 uint8_t sending_buffer[SENDING_BUFFER_SIZE];
 uint8_t FLAG_DATA_RECEIVED = 0;
 uint8_t BYTES_RECEIVED=0;
+
+uint8_t ADC_RESULT_L = 0;
+uint8_t ADC_RESULT_H = 0;
 
 extern "C"{
     #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
 }
 
 TwoWire Wire = TwoWire(rx_buffer);
-
-void getChannels(uint8_t *arr,uint8_t size)
-{
-    uint8_t counter = 0;
-    for(int i = 0; i<ADC_CHANNELS;i++)
-    {
-        if(CHECK_BIT(ANALOG_CHANNELS,i))
-        {
-            arr[counter] = ANALOG_DATA[i];
-            counter++;
-        }
-    }
-}
+adc ad = adc();
+//void getChannels(uint8_t *arr,uint8_t size)
+//{
+//    uint8_t counter = 0;
+//    for(int i = 0; i<ADC_CHANNELS;i++)
+//    {
+//        if(CHECK_BIT(ANALOG_CHANNEL_BIT_MASK,i))
+//        {
+//            arr[counter] = ANALOG_DATA[i];
+//            counter++;
+//        }
+//    }
+//}
 
 /*
  * FLAG SETUP:
@@ -74,6 +79,7 @@ void handleRecieve()
 void receiveEvent(int howMany) {
     FLAG_DATA_RECEIVED = 1;
     BYTES_RECEIVED = howMany;
+
 }
 void requestEvent() {
     if(FLAG_INPUT_READY&&FLAG_SETUP_DONE)
@@ -84,6 +90,7 @@ void requestEvent() {
 
 void setup()
 {
+
     Wire.begin(DEVICE_ID);
     Wire.onReceive(receiveEvent);
     Wire.onRequest(requestEvent);
@@ -91,6 +98,18 @@ void setup()
 
 void loop()
 {
+    if(FLAG_USE_ANALOG)
+    {
+        int counter = 0;
+        for (uint8_t i=0;i<ADC_CHANNELS;i++)
+        {
+            if(CHECK_BIT(ANALOG_CHANNEL_BIT_MASK,i))
+            {
+                ANALOG_DATA[counter] = ad.adc_read(i);
+                counter++;
+            }
+        }
+    }
     if(FLAG_DATA_REQUESTED) //sending routine
     {
         if(!FLAG_USE_ANALOG)
@@ -100,14 +119,17 @@ void loop()
         }
         else
         {
-            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
-            uint8_t channels[ANALOG_CHANNELS_ACTIVE] = {};
-            getChannels(channels,ANALOG_CHANNELS_ACTIVE);
+            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
+            t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = ADC_RESULT_H;
+            t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+1] = ADC_RESULT_L;
+            
+
             for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
             {
-                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+i] = channels[i] ;
+                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+i] = ANALOG_DATA[i] ;///TODO IMPLEMENT uint16 handling
             }
-            Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG+ANALOG_CHANNELS_ACTIVE);
+
+            Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE);
         }
         FLAG_DATA_REQUESTED = 0;
     }
@@ -135,7 +157,7 @@ void loop()
                     if(FLAG_USE_ANALOG)
                     {
                         ANALOG_CHANNELS_ACTIVE = rx_buffer[10];
-                        ANALOG_CHANNELS= rx_buffer[11];
+                        ANALOG_CHANNEL_BIT_MASK= rx_buffer[11];
                     }
 
                     FLAG_SETUP_DONE = 1;

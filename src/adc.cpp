@@ -42,8 +42,8 @@ uint16_t adc::adc_read(uint8_t ch) {
     return (ADC);
 }
 
-long adc::read_vcc() {
-    long result;
+uint16_t adc::read_vcc() {
+    uint16_t result;
     //refer to Avcc
     ADMUX |= _BV(REFS0);
     // user 1.1V input channel selection
@@ -54,7 +54,7 @@ long adc::read_vcc() {
     loop_until_bit_is_clear(ADCSRA,ADSC);
     result = ADCL;
     result |= ADCH << 8;
-    result = 1126400L / result; // Calculate Vcc (in mV); 1126400 = 1.1*1024*1000
+    //result = 1126400L / result; // Calculate Vcc (in mV); 1126400 = 1.1*1024*1000
     return result;
 }
 
