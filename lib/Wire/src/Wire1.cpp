@@ -284,7 +284,7 @@ void TwoWire::onReceiveService(uint8_t* inBytes, int numBytes)
   // don't bother if rx buffer is in use by a master requestFrom() op
   // i know this drops data, but it allows for slight stupidity
   // meaning, they may not have read all the master requestFrom() data yet
-//  if(rxBufferIndex < rxBufferLength){
+//  if(rxBufferIndex < rxBufferLength){///todo Library violation
 //    return;
 //  }
   // copy twi rx buffer into local read buffer
