@@ -126,10 +126,13 @@ void loop()
         else
         {
             uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND,ADC_RESULT_H,ADC_RESULT_L};
-
+            uint8_t counter = 0;
             for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
             {
-                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+i] = ANALOG_DATA[i] ;///TODO IMPLEMENT uint16 handling
+                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+counter] = (uint8_t)ANALOG_DATA[i]>>8;
+                counter++;
+                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+i] = (uint8_t)ANALOG_DATA[i];
+                counter++;
             }
 
             Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE);
