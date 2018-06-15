@@ -8,37 +8,45 @@
 
 
 //INPUT PULL-UPS ARE NOT REQUIRED IN SLAVE
+
+//CONSTANTS
 #define DEVICE_ID 0
 #define FLAG_SETUP 0xFA
 #define FLAG_OUT 0xFB
-#define FLAG_DATA_READY_TO_SEND 0xFC
 #define FLAG_SEND 0xFD
 #define USE_ANALOG_FLAG 0xFE
+
+//SENDING BUFFER SIZES
 #define SENDING_BUFFER_SIZE 14 // FLAG_SEND, Dev_ID, PINA-D, ANALOG0-7
 #define SENDING_BUFFER_SIZE_NO_ANALOG 6
 #define SENDING_BUFFER_VCC_SIZE 2
+//RX BUFFER
 #define MAX_RX_BUFFER_SIZE 32
+//ADC
 #define ADC_CHANNELS 8
-
+//POSITIONS todo: Add all postiions
 #define PORTA_POS 1
 #define PORTB_POS 2
 #define PORTC_POS 3
 #define PORTD_POS 4
 
+//FLAGS
 uint8_t FLAGS = 0;
-
-uint8_t rx_buffer[MAX_RX_BUFFER_SIZE];
 #define INPUT_READY (1<<0)
 #define SETUP_DONE (1<<1)
 #define DATA_REQUESTED (1<<2)
 #define FLAG_DATA_RECEIVED (1<<3)
 #define USE_ANALOG (1<<4)
 
+//BUFFERS
+uint8_t rx_buffer[MAX_RX_BUFFER_SIZE];
+//uint8_t sending_buffer[SENDING_BUFFER_SIZE];
+//ANALOG DYNAMIC MEMORY
 uint8_t ANALOG_CHANNELS_ACTIVE = 0;
 uint8_t ANALOG_CHANNEL_BIT_MASK = 0;
 uint16_t ANALOG_DATA[ADC_CHANNELS] = {};
 
-uint8_t sending_buffer[SENDING_BUFFER_SIZE];
+
 
 uint8_t BYTES_RECEIVED=0;
 
