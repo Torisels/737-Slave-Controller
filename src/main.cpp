@@ -15,7 +15,7 @@
 #define FLAG_OUT 0xFB
 #define FLAG_SEND 0xFD
 #define USE_ANALOG_FLAG 0xFE
-
+#define FLAG_SETUP_DONE 0xCF
 //SENDING BUFFER SIZES
 #define SENDING_BUFFER_SIZE 14 // FLAG_SEND, Dev_ID, PINA-D, ANALOG0-7
 #define SENDING_BUFFER_SIZE_NO_ANALOG 6
@@ -45,13 +45,13 @@ uint8_t rx_buffer[MAX_RX_BUFFER_SIZE];
 uint8_t ANALOG_CHANNELS_ACTIVE = 0;
 uint8_t ANALOG_CHANNEL_BIT_MASK = 0;
 uint16_t ANALOG_DATA[ADC_CHANNELS] = {};
+uint8_t ADC_RESULT_L = 0;
+uint8_t ADC_RESULT_H = 0;
 
 
 
 uint8_t BYTES_RECEIVED=0;
 
-uint8_t ADC_RESULT_L = 0;
-uint8_t ADC_RESULT_H = 0;
 
 extern "C"{
     #define CHECK_BIT(var,pos) ((var) & (1<<(pos)))
@@ -88,10 +88,10 @@ void receiveEvent(int howMany) {
     BYTES_RECEIVED = (uint8_t) howMany;
 }
 void requestEvent() {
-    if(/*(FLAGS & INPUT_READY)&&*/(FLAGS & SETUP_DONE))
-    {
+//    if(/*(FLAGS & INPUT_READY)&&*/(FLAGS & SETUP_DONE))
+//    {
         FLAGS |= DATA_REQUESTED;
-    }
+    //}
 }
 void setup()
 {
@@ -118,13 +118,13 @@ void loop()
             }
         }
     }
-    if(FLAG_DATA_RECEIVED)//receiving routine
+    if(FLAGS & FLAG_DATA_RECEIVED)//receiving routine
     {
         uint8_t flag = rx_buffer[0];
         switch (flag)
         {
             case FLAG_SETUP:
-                if(BYTES_RECEIVED>=11)
+                if(BYTES_RECEIVED>=10)
                 {
                     DDRA = rx_buffer[1];
                     PORTA = rx_buffer[2];
@@ -166,26 +166,33 @@ void loop()
     }
     if(FLAGS & DATA_REQUESTED) //sending routine
     {
-        if(0==(FLAGS&USE_ANALOG))
+        if(FLAGS & SETUP_DONE)
         {
-            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
-            Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG);
+            Wire.write(FLAG_SETUP_DONE,1);
+            FLAGS &= ~SETUP_DONE;
         }
-        else
-        {
-            uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND,ADC_RESULT_H,ADC_RESULT_L};
-            uint8_t counter = 0;
-            for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
+        else{
+            if(0==(FLAGS&USE_ANALOG))
             {
-                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+counter] = (uint8_t)ANALOG_DATA[i]>>8;
-                counter++;
-                t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+i] = (uint8_t)ANALOG_DATA[i];
-                counter++;
+                uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND};
+                Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG);
             }
+            else
+            {
+                uint8_t t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE] = {FLAG_SEND,DEVICE_ID,PINA,PINB,PINC,PIND,ADC_RESULT_H,ADC_RESULT_L};
+                uint8_t counter = 0;
+                for(int i=0;i<ANALOG_CHANNELS_ACTIVE;i++)
+                {
+                    t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+counter] = (uint8_t)ANALOG_DATA[i]>>8;
+                    counter++;
+                    t_buffer[SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+i] = (uint8_t)ANALOG_DATA[i];
+                    counter++;
+                }
 
-            Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE);
+                Wire.write(t_buffer,SENDING_BUFFER_SIZE_NO_ANALOG+SENDING_BUFFER_VCC_SIZE+ANALOG_CHANNELS_ACTIVE);
+            }
+            FLAGS &= ~DATA_REQUESTED ;
         }
-        FLAGS &= ~DATA_REQUESTED ;
     }
 }
 
