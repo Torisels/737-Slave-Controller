@@ -16,6 +16,10 @@
 #define FLAG_SEND 0xFD
 #define USE_ANALOG_FLAG 0xFE
 #define FLAG_SETUP_DONE 0xCF
+
+#define FLAG_SETUP_DATA_TRANSFER_FINISHED 0xCE
+
+
 //SENDING BUFFER SIZES
 #define SENDING_BUFFER_SIZE 14 // FLAG_SEND, Dev_ID, PINA-D, ANALOG0-7
 #define SENDING_BUFFER_SIZE_NO_ANALOG 6
@@ -126,6 +130,7 @@ void loop()
             case FLAG_SETUP:
                 if(BYTES_RECEIVED>=10)
                 {
+                    uint8_t setup_done = 0;
                     DDRA = rx_buffer[1];
                     PORTA = rx_buffer[2];
 
@@ -144,9 +149,13 @@ void loop()
                         FLAGS |= USE_ANALOG;
                         ANALOG_CHANNELS_ACTIVE = rx_buffer[10];
                         ANALOG_CHANNEL_BIT_MASK = rx_buffer[11];
+                        setup_done = rx_buffer[12];
                     }
-
-                    FLAGS |= SETUP_DONE;
+                    else{
+                        setup_done = rx_buffer[10];
+                    }
+                    if(setup_done == FLAG_SETUP_DATA_TRANSFER_FINISHED)
+                    {FLAGS |= SETUP_DONE;}
                 }
                 break;
 //            case FLAG_DATA_READY_TO_SEND:
